@@ -7,7 +7,7 @@ class MyApplication : Application() {
 
     companion object {
         lateinit var context: Context
-        const val TOKEN = ""
+        const val TOKEN = "F6FpeVaXQXs9T3A9"
     }
 
     override fun onCreate() {

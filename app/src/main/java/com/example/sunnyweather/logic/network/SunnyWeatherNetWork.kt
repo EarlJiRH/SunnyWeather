@@ -12,8 +12,17 @@ object SunnyWeatherNetWork {
     //PlaceService的动态代理对象
     private val placeService = ServiceCreator.create(PlaceService::class.java)
 
+    private val weatherService = ServiceCreator.create(WeatherService::class.java)
+
     //发起搜索方法 用以发起搜索城市数据请求
     suspend fun searchPlaces(query: String) = placeService.searchPlaces(query).await()
+
+
+    suspend fun getDailyWeather(lng: String, lat: String) =
+        weatherService.getDailyWeather(lng, lat).await()
+
+    suspend fun getRealtimeWeather(lng: String, lat: String) =
+        weatherService.getRealtimeWeather(lng, lat).await()
 
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine { continuation ->
